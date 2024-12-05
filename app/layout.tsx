@@ -1,10 +1,11 @@
-'use client';
+"use client";
 
 import './global.css';
 import { Header, Navigation } from './components/header';
 import { SearchProvider } from './components/search';
 import type { ReactNode } from 'react';
-import Head from 'next/head'; // Pour les métadonnées globales
+import Logo from '../public/ico.png';
+
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -13,14 +14,12 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="fr">
-      <Head>
-        {/* Titre par défaut */}
-        <title>Ma Boutique</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Bienvenue dans notre boutique en ligne." />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="keywords" content="boutique, shopping, produits" />
-      </Head>
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Moyens Logistiques Non Motorisés</title>
+        <link rel="icon" type="image/svg+xml" href={Logo.src} />
+      </head>
       <body>
         <SearchProvider>
           <div className="flex min-h-screen flex-col">

@@ -5,7 +5,6 @@ import R5 from '../public/chariot.jpg';
 import Image from 'next/image';
 import MemoizedFilterComponent from './components/filtre';
 import { SearchContext } from './components/search';
-import Head from 'next/head';
 
 const items = [
   { base: 'Base 1', price: '80.00€', departments: ['Tôlerie'], materials: ['AIO'] },
@@ -41,12 +40,6 @@ const Page = () => {
   });
 
   return (
-    <>
-      <Head>
-        <title>Accueil - Ma Boutique</title>
-        <meta name="description" content="Découvrez notre sélection d'articles." />
-        <meta name="keywords" content="boutique, produits, shopping" />
-      </Head>
       <div className="grid grid-cols-4 gap-4 items-start">
         <div className="col-span-4 sm:col-span-1 sm:sticky static top-4 h-fit">
           <MemoizedFilterComponent
@@ -85,7 +78,6 @@ const Page = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 
