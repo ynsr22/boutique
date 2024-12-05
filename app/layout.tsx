@@ -4,6 +4,7 @@ import './global.css';
 import { Header, Navigation } from './components/header';
 import { SearchProvider } from './components/search';
 import type { ReactNode } from 'react';
+import Head from 'next/head'; // Pour les métadonnées globales
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -12,9 +13,14 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <head>
+      <Head>
+        {/* Titre par défaut */}
+        <title>Ma Boutique</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
+        <meta name="description" content="Bienvenue dans notre boutique en ligne." />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="keywords" content="boutique, shopping, produits" />
+      </Head>
       <body>
         <SearchProvider>
           <div className="flex min-h-screen flex-col">

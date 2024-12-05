@@ -5,6 +5,7 @@ import R5 from '../public/chariot.jpg';
 import Image from 'next/image';
 import MemoizedFilterComponent from './components/filtre';
 import { SearchContext } from './components/search';
+import Head from 'next/head';
 
 const items = [
   { base: 'Base 1', price: '80.00€', departments: ['Tôlerie'], materials: ['AIO'] },
@@ -40,44 +41,51 @@ const Page = () => {
   });
 
   return (
-    <div className="grid grid-cols-4 gap-4 items-start">
-      <div className="col-span-4 sm:col-span-1 sm:sticky static top-4 h-fit">
-        <MemoizedFilterComponent
-          priceRange={priceRange}
-          setPriceRange={setPriceRange}
-          selectedDepartments={selectedDepartments}
-          setSelectedDepartments={setSelectedDepartments}
-          selectedMaterials={selectedMaterials}
-          setSelectedMaterials={setSelectedMaterials}
-          minPrice={minPrice}
-          maxPrice={maxPrice}
-        />
-      </div>
-      <div className="col-span-4 sm:col-span-3">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filteredItems.map((item, index) => (
-            <div
-              key={index}
-              className="aspect-square bg-white rounded-lg shadow-md border p-4 flex flex-col"
-            >
-              <div className="flex-1 flex items-center justify-center">
-                <Image
-                  src={R5.src}
-                  alt={`Image ${item.base}`}
-                  className="max-h-full max-w-full object-contain"
-                  width={500}
-                  height={500}
-                />
+    <>
+      <Head>
+        <title>Accueil - Ma Boutique</title>
+        <meta name="description" content="Découvrez notre sélection d'articles." />
+        <meta name="keywords" content="boutique, produits, shopping" />
+      </Head>
+      <div className="grid grid-cols-4 gap-4 items-start">
+        <div className="col-span-4 sm:col-span-1 sm:sticky static top-4 h-fit">
+          <MemoizedFilterComponent
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+            selectedDepartments={selectedDepartments}
+            setSelectedDepartments={setSelectedDepartments}
+            selectedMaterials={selectedMaterials}
+            setSelectedMaterials={setSelectedMaterials}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+          />
+        </div>
+        <div className="col-span-4 sm:col-span-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {filteredItems.map((item, index) => (
+              <div
+                key={index}
+                className="aspect-square bg-white rounded-lg shadow-md border p-4 flex flex-col"
+              >
+                <div className="flex-1 flex items-center justify-center">
+                  <Image
+                    src={R5.src}
+                    alt={`Image ${item.base}`}
+                    className="max-h-full max-w-full object-contain"
+                    width={500}
+                    height={500}
+                  />
+                </div>
+                <div className="flex justify-between mt-4">
+                  <span className="text-gray-800 font-medium">{item.base}</span>
+                  <span className="text-gray-600">{item.price}</span>
+                </div>
               </div>
-              <div className="flex justify-between mt-4">
-                <span className="text-gray-800 font-medium">{item.base}</span>
-                <span className="text-gray-600">{item.price}</span>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

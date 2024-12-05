@@ -1,4 +1,5 @@
 import { FC, memo } from 'react';
+import Head from 'next/head';
 
 // Separate Section component for reusability and better organization
 interface SectionProps {
@@ -47,6 +48,12 @@ const Notice: FC = memo(() => {
   ];
 
   return (
+    <>
+    <Head>
+      <title>Panier</title>
+      <meta name="description" content="Accédez à votre panier." />
+      <meta name="keywords" content="panier" />
+    </Head>
     <div className="p-8 max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Notice d&#39;utilisation</h1>
       {sections.map((section, index) => (
@@ -57,6 +64,7 @@ const Notice: FC = memo(() => {
         />
       ))}
     </div>
+    </>
   );
 });
 
