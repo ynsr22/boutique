@@ -4,7 +4,7 @@ import React, { useState, useContext } from 'react';
 import R5 from '../public/chariot.jpg';
 import Image from 'next/image';
 import MemoizedFilterComponent from './components/filtre';
-import { SearchContext } from './layout';
+import { SearchContext } from './components/search';
 
 const items = [
   { base: 'Base 1', price: '80.00€', departments: ['Tôlerie'], materials: ['AIO'] },
@@ -25,7 +25,7 @@ const Page = () => {
   const [priceRange, setPriceRange] = useState<[number, number]>([minPrice, maxPrice]);
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
-  const { searchQuery } = useContext(SearchContext); // Contexte pour la recherche
+  const { searchQuery } = useContext(SearchContext);
 
   const filteredItems = items.filter((item) => {
     const itemPrice = parseFloat(item.price.replace('€', ''));
