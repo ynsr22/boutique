@@ -6,6 +6,8 @@ import logo_responsive from '../../public/logo_renault_responsive.png';
 
 interface HeaderProps {
   cartCount: number;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
 }
 
 const NoticeIcon = () => (
@@ -43,16 +45,21 @@ const SearchIcon = () => (
   </svg>
 );
 
-const SearchBar = () => (
-  <form className="flex items-center w-full max-w-[256px] h-9 bg-white rounded-full overflow-hidden border">
+const SearchBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearchQuery: (query: string) => void }) => (
+  <form
+    className="flex items-center w-64 h-9 bg-white rounded-full overflow-hidden border"
+    onSubmit={(e) => e.preventDefault()}
+  >
     <input
       type="search"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
       placeholder="Recherche..."
-      className="w-full min-w-0 px-3 py-1 text-gray-700 bg-transparent focus:outline-none"
+      className="flex-grow px-3 py-1 text-gray-700 bg-transparent focus:outline-none"
     />
     <button
       type="submit"
-      className="flex-shrink-0 flex items-center justify-center w-10 h-full bg-black text-white hover:bg-gray-800 transition-colors"
+      className="flex items-center justify-center w-10 h-full bg-black text-white hover:bg-gray-800 transition-colors"
     >
       <SearchIcon />
     </button>
@@ -72,7 +79,7 @@ const CartIcon = ({ count }: { count: number }) => (
   </Link>
 );
 
-const Header = ({ cartCount }: HeaderProps) => (
+const Header = ({ cartCount, searchQuery, setSearchQuery }: HeaderProps) => (
   <header className="w-full h-14 bg-[#FFEA2F] flex items-center justify-between px-4 relative">
     {/* Logo à gauche */}
     <div className="flex items-center absolute left-4">
@@ -98,7 +105,7 @@ const Header = ({ cartCount }: HeaderProps) => (
 
     {/* Barre de recherche au centre */}
     <div className="flex justify-center items-center w-full">
-      <SearchBar />
+      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
     </div>
 
     {/* Panier à droite */}
@@ -107,7 +114,6 @@ const Header = ({ cartCount }: HeaderProps) => (
     </div>
   </header>
 );
-
 
 const Navigation = () => (
   <nav className="w-full h-10 bg-black">
