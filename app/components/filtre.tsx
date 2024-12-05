@@ -73,7 +73,7 @@ const FilterComponent: React.FC<{
   const [openSections, setOpenSections] = React.useState({
     department: false,
     material: false,
-    price: true,
+    price: false,
   });
 
   const toggleSection = useCallback((section: keyof typeof openSections) => {
