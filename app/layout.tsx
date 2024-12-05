@@ -12,7 +12,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <Head>
         {/* Titre par défaut */}
         <title>Ma Boutique</title>
