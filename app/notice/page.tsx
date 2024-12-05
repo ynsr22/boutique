@@ -22,7 +22,7 @@ const Notice: FC = memo(() => {
       title: "1. Installation",
       content: (
         <p className="text-gray-700 mb-4">
-          Connectez l'appareil à une prise électrique. Assurez-vous que tous les composants sont correctement assemblés avant la première utilisation.
+          Connectez l&#39;appareil à une prise électrique. Assurez-vous que tous les composants sont correctement assemblés avant la première utilisation.
         </p>
       )
     },
@@ -30,7 +30,7 @@ const Notice: FC = memo(() => {
       title: "2. Utilisation",
       content: (
         <ul className="list-disc pl-6 text-gray-700">
-          <li className="mb-2">Allumez l'appareil en appuyant sur le bouton principal</li>
+          <li className="mb-2">Allumez l&#39;appareil en appuyant sur le bouton principal</li>
           <li className="mb-2">Sélectionnez le mode désiré parmi les options disponibles</li>
           <li className="mb-2">Ajustez les paramètres selon vos besoins</li>
         </ul>
@@ -40,7 +40,7 @@ const Notice: FC = memo(() => {
       title: "3. Précautions",
       content: (
         <p className="text-gray-700 mb-4">
-          Ne pas utiliser près d'une source d'eau. Tenir hors de portée des enfants. Débrancher après utilisation.
+          Ne pas utiliser près d&#39;une source d&#39;eau. Tenir hors de portée des enfants. Débrancher après utilisation.
         </p>
       )
     }
@@ -48,7 +48,7 @@ const Notice: FC = memo(() => {
 
   return (
     <div className="p-8 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Notice d'utilisation</h1>
+      <h1 className="text-3xl font-bold mb-6">Notice d&#39;utilisation</h1>
       {sections.map((section, index) => (
         <Section 
           key={index}

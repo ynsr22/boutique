@@ -118,7 +118,7 @@ const Navigation = () => (
           className="h-full flex justify-center items-center gap-1 group py-2 px-4"
         >
           <NoticeIcon />
-          <span>Notice d'utilisation</span>
+          <span>Notice d&#39;utilisation</span>
         </Link>
       </div>
     </div>
