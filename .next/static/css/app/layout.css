@@ -633,17 +633,20 @@ video {
 .w-5 {
   width: 1.25rem;
 }
-.w-64 {
-  width: 16rem;
-}
 .w-full {
   width: 100%;
+}
+.min-w-0 {
+  min-width: 0px;
 }
 .max-w-3xl {
   max-width: 48rem;
 }
 .max-w-6xl {
   max-width: 72rem;
+}
+.max-w-\[256px\] {
+  max-width: 256px;
 }
 .max-w-full {
   max-width: 100%;

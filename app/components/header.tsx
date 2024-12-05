@@ -44,15 +44,15 @@ const SearchIcon = () => (
 );
 
 const SearchBar = () => (
-  <form className="flex items-center w-64 h-9 bg-white rounded-full overflow-hidden border">
+  <form className="flex items-center w-full max-w-[256px] h-9 bg-white rounded-full overflow-hidden border">
     <input
       type="search"
       placeholder="Recherche..."
-      className="flex-grow px-3 py-1 text-gray-700 bg-transparent focus:outline-none"
+      className="w-full min-w-0 px-3 py-1 text-gray-700 bg-transparent focus:outline-none"
     />
     <button
       type="submit"
-      className="flex items-center justify-center w-10 h-full bg-black text-white hover:bg-gray-800 transition-colors"
+      className="flex-shrink-0 flex items-center justify-center w-10 h-full bg-black text-white hover:bg-gray-800 transition-colors"
     >
       <SearchIcon />
     </button>
