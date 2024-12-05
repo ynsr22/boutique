@@ -29,7 +29,7 @@ const SearchIcon = () => (
 
 const SearchBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearchQuery: (query: string) => void }) => (
   <form
-    className="flex items-center w-64 h-9 bg-white rounded-full overflow-hidden border"
+    className="flex items-center w-full max-w-[256px] h-9 bg-white rounded-full overflow-hidden border"
     onSubmit={(e) => e.preventDefault()}
   >
     <input
@@ -37,11 +37,11 @@ const SearchBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSe
       value={searchQuery}
       onChange={(e) => setSearchQuery(e.target.value)}
       placeholder="Recherche..."
-      className="flex-grow px-3 py-1 text-gray-700 bg-transparent focus:outline-none"
+      className="w-full min-w-0 px-3 py-1 text-gray-700 bg-transparent focus:outline-none"
     />
     <button
       type="submit"
-      className="flex items-center justify-center w-10 h-full bg-black text-white hover:bg-gray-800 transition-colors"
+      className="flex-shrink-0 flex items-center justify-center w-10 h-full bg-black text-white hover:bg-gray-800 transition-colors"
     >
       <SearchIcon />
     </button>
