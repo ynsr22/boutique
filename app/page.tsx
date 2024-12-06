@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useState, useContext } from 'react';
 import R5 from '../public/chariot.jpg';
 import Image from 'next/image';
@@ -53,28 +54,29 @@ const Page = () => {
             maxPrice={maxPrice}
           />
         </div>
-        <div className="col-span-4 sm:col-span-3">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {filteredItems.map((item, index) => (
-              <div
-                key={index}
-                className="aspect-square bg-white rounded-lg shadow-md border p-4 flex flex-col"
-              >
-                <div className="flex-1 flex items-center justify-center">
-                  <Image
-                    src={R5.src}
-                    alt={`Image ${item.base}`}
-                    className="max-h-full max-w-full object-contain"
-                    width={500}
-                    height={500}
-                  />
-                </div>
-                <div className="flex justify-between mt-4">
-                  <span className="text-gray-800 font-medium">{item.base}</span>
-                  <span className="text-gray-600">{item.price}</span>
-                </div>
-              </div>
-            ))}
+        <div className="col-span-2 md:col-span-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {filteredItems.map((item, index) => (
+  <Link
+    key={index}
+    href={`/${item.base.replace(' ', '_').toLowerCase()}`}
+    className="aspect-square bg-white rounded-lg shadow-md border p-4 flex flex-col"
+  >
+    <div className="flex-1 flex items-center justify-center">
+      <Image
+        src={R5.src}
+        alt={`Image ${item.base}`}
+        className="max-h-full max-w-full object-contain"
+        width={500}
+        height={500}
+      />
+    </div>
+    <div className="flex justify-between mt-4">
+      <span className="text-gray-800 font-medium">{item.base}</span>
+      <span className="text-gray-600">{item.price}</span>
+    </div>
+  </Link>
+))}
           </div>
         </div>
       </div>
