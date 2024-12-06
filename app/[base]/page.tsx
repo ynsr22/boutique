@@ -2,6 +2,11 @@
 
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation, Pagination } from 'swiper/modules';
 
 const materials = ['AIO', 'TRILOGIQ', 'INDEVA']; // Replace with dynamic data if needed
 const accessories = Array(8).fill('Accessory'); // Mock accessory data
@@ -80,16 +85,27 @@ const BasePage = () => {
       {/* Accessories Section */}
       <div className="mt-8">
         <h2 className="text-lg font-semibold mb-4">Accessoires :</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <Swiper
+          modules={[Navigation, Pagination]}
+          spaceBetween={16}
+          slidesPerView={3}
+          navigation
+          pagination={{ clickable: true }}
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+          }}
+          className="w-full"
+        >
           {accessories.map((accessory, index) => (
-            <div
-              key={index}
-              className="aspect-square bg-gray-100 border rounded-lg flex justify-center items-center"
-            >
-              <span className="text-gray-500">{accessory}</span>
-            </div>
+            <SwiperSlide key={index}>
+              <div className="aspect-square bg-gray-100 border rounded-lg flex justify-center items-center">
+                <span className="text-gray-500">{accessory} {index + 1}</span>
+              </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </div>
   );
