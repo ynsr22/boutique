@@ -60,7 +60,7 @@ const Page = () => {
   <Link
     key={index}
     href={`/${item.base.replace(' ', '_').toLowerCase()}`}
-    className="aspect-square bg-white rounded-lg shadow-md border p-4 flex flex-col"
+    className="aspect-square bg-white rounded-lg shadow-md hover:bg-gray-100 border p-4 flex flex-col"
   >
     <div className="flex-1 flex items-center justify-center">
       <Image
