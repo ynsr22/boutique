@@ -23,7 +23,7 @@ const Notice: FC = memo(() => {
       title: "1. Introduction",
       content: (
         <p className="text-gray-700 mb-4">
-          Cette notice est un exemple temporaire pour illustrer l'utilisation d'un site web en cours de développement. Le contenu sera mis à jour à mesure que le projet avance et que les fonctionnalités finales seront définies.
+          Cette notice est un exemple temporaire pour illustrer l&apos;utilisation d&apos;un site web en cours de développement. Le contenu sera mis à jour à mesure que le projet avance et que les fonctionnalités finales seront définies.
         </p>
       )
     },
@@ -41,7 +41,7 @@ const Notice: FC = memo(() => {
       title: "3. Fonctionnalités futures",
       content: (
         <p className="text-gray-700 mb-4">
-          Les fonctionnalités incluront la consultation des produits, la configuration personnalisée, et la gestion des commandes. Des mises à jour régulières garantiront l'évolution et l'amélioration de l'expérience utilisateur.
+          Les fonctionnalités incluront la consultation des produits, la configuration personnalisée, et la gestion des commandes. Des mises à jour régulières garantiront l&apos;évolution et l&apos;amélioration de l&apos;expérience utilisateur.
         </p>
       )
     }
@@ -51,7 +51,7 @@ const Notice: FC = memo(() => {
     <>
       <Head>
         <title>Notice Exemple</title>
-        <meta name="description" content="Exemple de notice d'utilisation pour un site web en développement." />
+        <meta name="description" content="Exemple de notice d&apos;utilisation pour un site web en développement." />
         <meta name="keywords" content="notice exemple, site web" />
       </Head>
       <div className="p-8 max-w-3xl mx-auto">
