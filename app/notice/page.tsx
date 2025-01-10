@@ -20,28 +20,28 @@ Section.displayName = 'Section';
 const Notice: FC = memo(() => {
   const sections = [
     {
-      title: "1. Installation",
+      title: "1. Introduction",
       content: (
         <p className="text-gray-700 mb-4">
-          Connectez l&#39;appareil à une prise électrique. Assurez-vous que tous les composants sont correctement assemblés avant la première utilisation.
+          Cette notice est un exemple temporaire pour illustrer l'utilisation d'un site web en cours de développement. Le contenu sera mis à jour à mesure que le projet avance et que les fonctionnalités finales seront définies.
         </p>
       )
     },
     {
-      title: "2. Utilisation",
+      title: "2. Objectifs du site",
       content: (
         <ul className="list-disc pl-6 text-gray-700">
-          <li className="mb-2">Allumez l&#39;appareil en appuyant sur le bouton principal</li>
-          <li className="mb-2">Sélectionnez le mode désiré parmi les options disponibles</li>
-          <li className="mb-2">Ajustez les paramètres selon vos besoins</li>
+          <li className="mb-2">Faciliter la commande des moyens logistiques non motorisés.</li>
+          <li className="mb-2">Centraliser les informations pour une meilleure gestion.</li>
+          <li className="mb-2">Offrir une interface intuitive inspirée des boutiques en ligne.</li>
         </ul>
       )
     },
     {
-      title: "3. Précautions",
+      title: "3. Fonctionnalités futures",
       content: (
         <p className="text-gray-700 mb-4">
-          Ne pas utiliser près d&#39;une source d&#39;eau. Tenir hors de portée des enfants. Débrancher après utilisation.
+          Les fonctionnalités incluront la consultation des produits, la configuration personnalisée, et la gestion des commandes. Des mises à jour régulières garantiront l'évolution et l'amélioration de l'expérience utilisateur.
         </p>
       )
     }
@@ -49,21 +49,21 @@ const Notice: FC = memo(() => {
 
   return (
     <>
-    <Head>
-      <title>Panier</title>
-      <meta name="description" content="Accédez à votre panier." />
-      <meta name="keywords" content="panier" />
-    </Head>
-    <div className="p-8 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Notice d&#39;utilisation</h1>
-      {sections.map((section, index) => (
-        <Section 
-          key={index}
-          title={section.title}
-          content={section.content}
-        />
-      ))}
-    </div>
+      <Head>
+        <title>Notice Exemple</title>
+        <meta name="description" content="Exemple de notice d'utilisation pour un site web en développement." />
+        <meta name="keywords" content="notice exemple, site web" />
+      </Head>
+      <div className="p-8 max-w-3xl mx-auto">
+        <h1 className="text-3xl font-bold mb-6">Notice Exemple</h1>
+        {sections.map((section, index) => (
+          <Section 
+            key={index}
+            title={section.title}
+            content={section.content}
+          />
+        ))}
+      </div>
     </>
   );
 });
