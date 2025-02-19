@@ -131,7 +131,7 @@ const Header = ({ cartCount }: HeaderProps) => {
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       </div>
       <div className="flex items-center absolute right-4">
-        <CartIcon count={cartCount} />
+        <CartIcon />
       </div>
     </header>
   );
