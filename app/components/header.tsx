@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useEffect, useCallback, useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SearchContext } from '../components/search';
@@ -66,18 +66,28 @@ const SearchBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSe
   </form>
 );
 
-const CartIcon = ({ count }: { count: number }) => (
-  <Link href="/panier">
-    <div className="relative flex-shrink-0 cursor-pointer hover:bg-white rounded-full p-2 transition-colors">
-      <Image src={bag} alt="Shopping bag" width={30} height={30} />
-      {count > 0 && (
-        <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-          {count}
-        </span>
-      )}
-    </div>
-  </Link>
-);
+const CartIcon = () => {
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const totalItems = storedCart.reduce((acc, item) => acc + item.quantity, 0);
+    setCartCount(totalItems);
+  }, []);
+
+  return (
+    <Link href="/panier">
+      <div className="relative flex-shrink-0 cursor-pointer hover:bg-white rounded-full p-2 transition-colors">
+        <Image src={bag} alt="Shopping bag" width={30} height={30} />
+        {cartCount > 0 && (
+          <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            {cartCount}
+          </span>
+        )}
+      </div>
+    </Link>
+  );
+};
 
 const Header = ({ cartCount }: HeaderProps) => {
   const { searchQuery, setSearchQuery } = useContext(SearchContext);
