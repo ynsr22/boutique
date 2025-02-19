@@ -6,7 +6,6 @@ import autoTable from 'jspdf-autotable';
 import Image from 'next/image';
 import Link from 'next/link';
 import R5 from '../../public/chariot.jpg';
-import logoRenault from '../../public/renault.png'; // <-- On importe le logo localement
 
 const Panier = () => {
   const [cart, setCart] = useState([]);
