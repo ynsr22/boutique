@@ -7,6 +7,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import R5 from '../../public/chariot.jpg';
 
+interface AutoTableAPI {
+  lastAutoTable: {
+    finalY: number;
+  }
+}
+
 const Panier = () => {
   const [cart, setCart] = useState([]);
 
@@ -133,7 +139,7 @@ const Panier = () => {
     // 4. Total et commentaires
     // ========================
     // Récupération de la position finale du tableau
-    const finalY = (doc as any).lastAutoTable.finalY; // TypeScript ne connaît pas lastAutoTable
+    const finalY = (doc as unknown as AutoTableAPI).lastAutoTable.finalY; // TypeScript ne connaît pas lastAutoTable
   
     // Ajout du total
     doc.setFontSize(12);
