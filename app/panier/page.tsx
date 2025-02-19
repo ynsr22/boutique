@@ -16,13 +16,6 @@ const Panier = () => {
     setCart(storedCart);
   }, []);
 
-  const addToCart = useCallback((item) => {
-    const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    storedCart.push(item);
-    localStorage.setItem('cart', JSON.stringify(storedCart));
-    setCart(storedCart);
-  }, []);
-
   const updateQuantity = (index, quantity) => {
     if (quantity < 1) return; // Empêche la saisie négative ou nulle
     const newCart = [...cart];
