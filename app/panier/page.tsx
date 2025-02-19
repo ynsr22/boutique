@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
-import autoTable, { UserOptions } from 'jspdf-autotable';
+import autoTable  from 'jspdf-autotable';
 import Image from 'next/image';
 import Link from 'next/link';
 import R5 from '../../public/chariot.jpg';
