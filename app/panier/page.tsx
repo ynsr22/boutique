@@ -134,7 +134,7 @@ const Panier = () => {
     // ========================
     // 4. Total et commentaires
     // ========================
-    const finalY = doc.lastAutoTable.finalY + 10;
+    const finalY = (doc as any).lastAutoTable ? (doc as any).lastAutoTable.finalY + 10 : 100;
 
     // On ajoute le total
     doc.setFontSize(12);
