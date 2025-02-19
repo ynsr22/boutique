@@ -6,10 +6,6 @@ import logo from '../../public/logo_renault.png';
 import bag from '../../public/bag.svg';
 import logo_responsive from '../../public/logo_renault_responsive.png';
 
-interface HeaderProps {
-  cartCount: number;
-}
-
 const SearchIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +98,7 @@ const CartIcon = () => {
 
 
 
-const Header = ({ cartCount }: HeaderProps) => {
+const Header = () => {
   const { searchQuery, setSearchQuery } = useContext(SearchContext);
 
   return (
