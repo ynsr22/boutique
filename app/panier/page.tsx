@@ -186,13 +186,6 @@ const Panier = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {/* Titre principal */}
-      <div className="border-b pb-4 mb-6">
-        <h1 className="text-3xl font-bold text-gray-800">Mon Panier</h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Vérifiez vos articles et finalisez votre commande.
-        </p>
-      </div>
 
       {cart.length === 0 ? (
         // Si le panier est vide
