@@ -3,6 +3,8 @@
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@mui/material": "^6.1.10",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
     "mui": "^0.0.1",
     "next": "^15.0.3",
     "rc-slider": "^11.1.7",
