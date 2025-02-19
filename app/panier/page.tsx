@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
+import autoTable, { UserOptions } from 'jspdf-autotable';
 import Image from 'next/image';
 import Link from 'next/link';
 import R5 from '../../public/chariot.jpg';
@@ -40,7 +40,7 @@ const Panier = () => {
 
   const generatePDF = async () => {
     // Instanciation du document
-    const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+    const doc = new jsPDF({ unit: 'mm', format: 'a4' }) as jsPDF & { lastAutoTable?: { finalY: number } };
 
     // Définition des métadonnées
     doc.setProperties({
@@ -134,7 +134,7 @@ const Panier = () => {
     // ========================
     // 4. Total et commentaires
     // ========================
-    const finalY = (doc as any).lastAutoTable ? (doc as any).lastAutoTable.finalY + 10 : 100;
+    const finalY = doc.lastAutoTable?.finalY ?? 100; // 100 si undefined
 
     // On ajoute le total
     doc.setFontSize(12);
