@@ -193,7 +193,7 @@ const BasePage = () => {
     <div className="container mx-auto p-4 max-w-4xl">
       {/* En-tête */}
       <div className="mb-6 border-b pb-3">
-        <h1 className="text-2xl font-bold text-gray-800">Base {base}</h1>
+        <h1 className="text-2xl font-bold text-gray-800">{base}</h1>
         <p className="text-sm text-gray-500">Choisissez les options et ajoutez au panier.</p>
       </div>
 
