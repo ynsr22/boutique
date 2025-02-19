@@ -41,45 +41,63 @@ const Page = () => {
   });
 
   return (
-      <div className="grid grid-cols-4 gap-4 items-start">
-        <div className="col-span-4 sm:col-span-1 sm:sticky static top-4 h-fit">
-          <MemoizedFilterComponent
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
-            selectedDepartments={selectedDepartments}
-            setSelectedDepartments={setSelectedDepartments}
-            selectedMaterials={selectedMaterials}
-            setSelectedMaterials={setSelectedMaterials}
-            minPrice={minPrice}
-            maxPrice={maxPrice}
-          />
-        </div>
-        <div className="col-span-2 md:col-span-3 lg:grid-cols-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filteredItems.map((item, index) => (
-  <Link
-    key={index}
-    href={`/${item.base.replace(' ', '_').toLowerCase()}`}
-    className="aspect-square bg-white rounded-lg shadow-md hover:bg-gray-100 border p-4 flex flex-col"
-  >
-    <div className="flex-1 flex items-center justify-center">
-      <Image
-        src={R5.src}
-        alt={`Image ${item.base}`}
-        className="max-h-full max-w-full object-contain"
-        width={500}
-        height={500}
-      />
-    </div>
-    <div className="flex justify-between mt-4">
-      <span className="text-gray-800 font-medium">{item.base}</span>
-      <span className="text-gray-600">{item.price}</span>
-    </div>
-  </Link>
-))}
-          </div>
+    <div className="min-h-screen">
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* Sidebar des filtres */}
+          <aside className="md:col-span-1 md:sticky md:top-8 h-fit">
+            <MemoizedFilterComponent
+              priceRange={priceRange}
+              setPriceRange={setPriceRange}
+              selectedDepartments={selectedDepartments}
+              setSelectedDepartments={setSelectedDepartments}
+              selectedMaterials={selectedMaterials}
+              setSelectedMaterials={setSelectedMaterials}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
+            />
+          </aside>
+
+          {/* Grille des produits */}
+          <section className="md:col-span-3">
+
+            {filteredItems.length === 0 ? (
+              <p className="text-center text-gray-600 mt-10">
+                Aucun résultat trouvé.
+              </p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {filteredItems.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={`/${item.base.replace(/\s+/g, '_').toLowerCase()}`}
+                    className="bg-white rounded-lg shadow border border-gray-200 p-4 flex flex-col hover:shadow-lg transition-shadow duration-200"
+                  >
+                    <div className="flex-1 flex items-center justify-center mb-4">
+                      <Image
+                        src={R5.src}
+                        alt={`Image de ${item.base}`}
+                        className="max-h-48 object-contain"
+                        width={300}
+                        height={300}
+                      />
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-lg font-semibold text-gray-800">
+                        {item.base}
+                      </h3>
+                      <span className="text-sm font-medium text-gray-600">
+                        {item.price}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </section>
         </div>
       </div>
+    </div>
   );
 };
 
