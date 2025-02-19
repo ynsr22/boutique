@@ -55,29 +55,33 @@ const Panier = () => {
     // On convertit le logo importé en Base64 (partie asynchrone)
     // Si jamais la conversion pose souci, il est possible d'héberger l'image 
     // et de la charger via URL (doc.addImage('https://...logo_renault.png', ...)).
-    const fetchImageAsBase64 = (imagePath) =>
-      new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        fetch(imagePath)
-          .then((res) => res.blob())
-          .then((blob) => {
-            reader.readAsDataURL(blob);
-            reader.onloadend = () => {
-              resolve(reader.result);
-            };
-          })
-          .catch((err) => reject(err));
-      });
+    const fetchImageAsBase64 = async (imagePath) => {
+      try {
+        const response = await fetch(imagePath);
+        const blob = await response.blob();
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = () => resolve(reader.result);
+        });
+      } catch (error) {
+        console.error("Erreur lors du chargement du logo:", error);
+        return null;
+      }
+    };
 
     const logoBase64 = await fetchImageAsBase64(logoRenault.src);
+
+    if (logoBase64) {
+      doc.addImage(logoBase64, 'PNG', 14, 8, 25, 18);
+    } else {
+      console.warn("Logo non chargé, l'image ne sera pas ajoutée au PDF.");
+    }
+    
 
     // On dessine une barre de fond en haut pour un effet “professionnel”
     doc.setFillColor(242, 242, 242); // Gris très clair
     doc.rect(0, 0, 210, 40, 'F'); // Rectangle sur toute la largeur (A4 = 210mm)
-
-    // Ajout du logo en haut à gauche
-    // Positions X, Y, plus la taille (largeur, hauteur)
-    doc.addImage(logoBase64, 'PNG', 14, 8, 25, 18);
 
     // Titre "Bon de commande" en haut à droite
     doc.setFont('helvetica', 'bold');
