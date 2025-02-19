@@ -22,12 +22,14 @@ const Panier = () => {
     newCart[index].quantity = quantity;
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
+    window.dispatchEvent(new Event("cartUpdated"));
   };
 
   const removeItem = (index) => {
     const newCart = cart.filter((_, i) => i !== index);
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
+    window.dispatchEvent(new Event("cartUpdated"));
   };
 
   const calculateTotal = () => {

@@ -164,6 +164,7 @@ const BasePage = () => {
 
   const handleAddToCart = useCallback(() => {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
     const newItem = {
       base,
       material: selectedMaterial,
@@ -177,6 +178,7 @@ const BasePage = () => {
     };
     cart.push(newItem);
     localStorage.setItem('cart', JSON.stringify(cart));
+    window.dispatchEvent(new Event("cartUpdated"));
     console.log('Ajouté au panier:', newItem);
 
     setShowNotification(true);

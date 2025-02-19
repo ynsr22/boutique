@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useContext } from 'react';
+import { useState, useEffect, useCallback ,useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SearchContext } from '../components/search';
@@ -69,11 +69,22 @@ const SearchBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSe
 const CartIcon = () => {
   const [cartCount, setCartCount] = useState(0);
 
-  useEffect(() => {
+  const updateCartCount = useCallback(() => {
     const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
     const totalItems = storedCart.reduce((acc, item) => acc + item.quantity, 0);
     setCartCount(totalItems);
   }, []);
+
+  useEffect(() => {
+    updateCartCount(); // Mise à jour initiale
+
+    const handleCartUpdate = () => {
+      updateCartCount();
+    };
+
+    window.addEventListener("cartUpdated", handleCartUpdate);
+    return () => window.removeEventListener("cartUpdated", handleCartUpdate);
+  }, [updateCartCount]);
 
   return (
     <Link href="/panier">
@@ -88,6 +99,8 @@ const CartIcon = () => {
     </Link>
   );
 };
+
+
 
 const Header = ({ cartCount }: HeaderProps) => {
   const { searchQuery, setSearchQuery } = useContext(SearchContext);
