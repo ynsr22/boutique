@@ -7,7 +7,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import R5 from '../../public/chariot.jpg';
+import R5 from '../../../public/chariot.jpg';
 
 // Types
 type Material = 'AIO' | 'TRILOGIQ' | 'INDEVA';
