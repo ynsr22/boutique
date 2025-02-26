@@ -336,7 +336,7 @@ const BasePage = () => {
               slidesPerView={1}
               navigation
               pagination={{ clickable: true }}
-              loop={true}
+              loop
               breakpoints={{
                 640: { slidesPerView: 2 },
                 1024: { slidesPerView: 3 },
