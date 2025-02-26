@@ -1,10 +1,10 @@
-import { useState, useEffect, useCallback ,useContext } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { SearchContext } from '../components/search';
-import logo from '../../public/logo_renault.png';
-import bag from '../../public/bag.svg';
-import logo_responsive from '../../public/logo_renault_responsive.png';
+import { useState, useEffect, useCallback, useContext } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { SearchContext } from "../components/search";
+import logo from "../../public/logo_renault.png";
+import bag from "../../public/bag.svg";
+import logo_responsive from "../../public/logo_renault_responsive.png";
 
 const SearchIcon = () => (
   <svg
@@ -41,7 +41,13 @@ const NoticeIcon = () => (
   </svg>
 );
 
-const SearchBar = ({ searchQuery, setSearchQuery }: { searchQuery: string; setSearchQuery: (query: string) => void }) => (
+const SearchBar = ({
+  searchQuery,
+  setSearchQuery,
+}: {
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+}) => (
   <form
     className="flex items-center w-full max-w-[256px] h-9 bg-white rounded-full overflow-hidden border"
     onSubmit={(e) => e.preventDefault()}
@@ -66,7 +72,7 @@ const CartIcon = () => {
   const [cartCount, setCartCount] = useState(0);
 
   const updateCartCount = useCallback(() => {
-    const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
     const totalItems = storedCart.reduce((acc, item) => acc + item.quantity, 0);
     setCartCount(totalItems);
   }, []);
@@ -95,8 +101,6 @@ const CartIcon = () => {
     </Link>
   );
 };
-
-
 
 const Header = () => {
   const { searchQuery, setSearchQuery } = useContext(SearchContext);

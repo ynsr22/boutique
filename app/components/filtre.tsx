@@ -1,53 +1,55 @@
-'use client';
+"use client";
 
 import React, { useCallback, memo } from "react";
 import { Slider } from "@mui/material";
 
 const FILTER_CONFIG = {
-  departments: ['Tôlerie', 'Montage'],
-  materials: ['AIO', 'TRILOGIQ', 'INDEVA'],
+  departments: ["Tôlerie", "Montage"],
+  materials: ["AIO", "TRILOGIQ", "INDEVA"],
 };
 
 const sliderStyles = {
-  color: 'black',
-  '& .MuiSlider-thumb': {
-    backgroundColor: 'black',
-    border: '2px solid white',
+  color: "black",
+  "& .MuiSlider-thumb": {
+    backgroundColor: "black",
+    border: "2px solid white",
   },
-  '& .MuiSlider-rail': {
+  "& .MuiSlider-rail": {
     opacity: 0.5,
-    backgroundColor: '#ccc',
+    backgroundColor: "#ccc",
   },
-  '& .MuiSlider-mark': {
-    color: 'black',
+  "& .MuiSlider-mark": {
+    color: "black",
   },
-  '& .MuiSlider-markLabel': {
-    fontSize: '0.75rem',
+  "& .MuiSlider-markLabel": {
+    fontSize: "0.75rem",
   },
 };
 
-const FilterSection = memo(({ 
-  title, 
-  isOpen, 
-  onToggle, 
-  children 
-}: { 
-  title: string;
-  isOpen: boolean;
-  onToggle: () => void;
-  children: React.ReactNode;
-}) => (
-  <section>
-    <button
-      onClick={onToggle}
-      className="w-full flex justify-between items-center py-2 px-3 border-b text-left text-lg font-bold"
-    >
-      {title}
-      <span>{isOpen ? "−" : "+"}</span>
-    </button>
-    {isOpen && <div className="p-2">{children}</div>}
-  </section>
-));
+const FilterSection = memo(
+  ({
+    title,
+    isOpen,
+    onToggle,
+    children,
+  }: {
+    title: string;
+    isOpen: boolean;
+    onToggle: () => void;
+    children: React.ReactNode;
+  }) => (
+    <section>
+      <button
+        onClick={onToggle}
+        className="w-full flex justify-between items-center py-2 px-3 border-b text-left text-lg font-bold"
+      >
+        {title}
+        <span>{isOpen ? "−" : "+"}</span>
+      </button>
+      {isOpen && <div className="p-2">{children}</div>}
+    </section>
+  ),
+);
 
 FilterSection.displayName = "FilterSection";
 
@@ -80,30 +82,41 @@ const FilterComponent: React.FC<{
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
   }, []);
 
-  const toggleSelection = useCallback((currentSelections: string[], itemToToggle: string): string[] =>
-    currentSelections.includes(itemToToggle)
-      ? currentSelections.filter((item) => item !== itemToToggle)
-      : [...currentSelections, itemToToggle],
-  []);
+  const toggleSelection = useCallback(
+    (currentSelections: string[], itemToToggle: string): string[] =>
+      currentSelections.includes(itemToToggle)
+        ? currentSelections.filter((item) => item !== itemToToggle)
+        : [...currentSelections, itemToToggle],
+    [],
+  );
 
-  const handleSliderChange = useCallback((event: Event, newValue: number | number[]) => {
-    setPriceRange(newValue as [number, number]);
-  }, [setPriceRange]);
+  const handleSliderChange = useCallback(
+    (event: Event, newValue: number | number[]) => {
+      setPriceRange(newValue as [number, number]);
+    },
+    [setPriceRange],
+  );
 
-  const handleDepartmentChange = useCallback((department: string) => {
-    setSelectedDepartments((prev) => toggleSelection(prev, department));
-  }, [toggleSelection, setSelectedDepartments]);
+  const handleDepartmentChange = useCallback(
+    (department: string) => {
+      setSelectedDepartments((prev) => toggleSelection(prev, department));
+    },
+    [toggleSelection, setSelectedDepartments],
+  );
 
-  const handleMaterialChange = useCallback((material: string) => {
-    setSelectedMaterials((prev) => toggleSelection(prev, material));
-  }, [toggleSelection, setSelectedMaterials]);
+  const handleMaterialChange = useCallback(
+    (material: string) => {
+      setSelectedMaterials((prev) => toggleSelection(prev, material));
+    },
+    [toggleSelection, setSelectedMaterials],
+  );
 
   return (
     <div className="w-full p-4 border rounded-lg shadow-md bg-white">
       <FilterSection
         title="Départements"
         isOpen={openSections.department}
-        onToggle={() => toggleSection('department')}
+        onToggle={() => toggleSection("department")}
       >
         {FILTER_CONFIG.departments.map((dept) => (
           <label key={dept} className="block">
@@ -121,7 +134,7 @@ const FilterComponent: React.FC<{
       <FilterSection
         title="Matériaux"
         isOpen={openSections.material}
-        onToggle={() => toggleSection('material')}
+        onToggle={() => toggleSection("material")}
       >
         {FILTER_CONFIG.materials.map((material) => (
           <label key={material} className="block">
@@ -139,7 +152,7 @@ const FilterComponent: React.FC<{
       <FilterSection
         title="Prix"
         isOpen={openSections.price}
-        onToggle={() => toggleSection('price')}
+        onToggle={() => toggleSection("price")}
       >
         <Slider
           value={priceRange}
@@ -150,7 +163,10 @@ const FilterComponent: React.FC<{
           step={10}
           marks={[
             { value: minPrice, label: `${minPrice}€` },
-            { value: (minPrice + maxPrice) / 2, label: `${Math.round((minPrice + maxPrice) / 2)}€` },
+            {
+              value: (minPrice + maxPrice) / 2,
+              label: `${Math.round((minPrice + maxPrice) / 2)}€`,
+            },
             { value: maxPrice, label: `${maxPrice}€` },
           ]}
           sx={sliderStyles}
