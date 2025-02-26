@@ -1,11 +1,10 @@
 "use client";
 
-import './global.css';
-import { Header, Navigation } from './components/header';
-import { SearchProvider } from './components/search';
-import type { ReactNode } from 'react';
-import Logo from '../public/ico.png';
-
+import "./global.css";
+import { Header, Navigation } from "./components/header";
+import { SearchProvider } from "./components/search";
+import type { ReactNode } from "react";
+import Logo from "../public/ico.png";
 
 interface RootLayoutProps {
   children: ReactNode;
