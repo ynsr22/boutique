@@ -208,7 +208,7 @@ export default function ProductsPage() {
             <div className="sticky top-8">
               <Suspense
                 fallback={
-                  <div className="h-40 bg-gray-100 animate-pulse rounded"></div>
+                  <div className="h-40 bg-gray-100 animate-pulse rounded" />
                 }
               >
                 <MemoizedFilterComponent
